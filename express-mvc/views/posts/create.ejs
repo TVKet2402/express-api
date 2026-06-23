@@ -1,0 +1,15 @@
+<%- include("../partials/header", { title: "Thêm bài viết" }) %> 
+<%- include("../partials/navbar") %> 
+  <h1>Thêm bài viết</h1>
+  <form action="/news/add" method="POST">
+    <div>
+      <label>Tiêu đề</label>
+      <input type="text" name="title">
+    </div>
+    <div>
+      <label>Mô tả</label>
+      <textarea name="description"></textarea>
+    </div>
+    <button type="submit">Lưu</button>
+  </form>
+<%- include("../partials/footer") %>

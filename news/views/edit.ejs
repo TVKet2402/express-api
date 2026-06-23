@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sửa bài viết</title>
+</head>
+<body>
+    <h1>Sửa bài viết</h1>
+    <% if (post) { %> 
+        <form method="POST" action="/edit"> 
+            <input type="hidden" name="id" value="<%= post.id %>"> 
+            <label>Tiêu đề:</label><br> 
+            <input type="text" name="title" value="<%= post.title %>"><br><br> 
+            <label>Mô tả:</label><br> 
+            <textarea name="description" rows="5" cols="40"><%= post.description %></textarea><br><br> 
+            <button type="submit">Cập nhật</button> 
+        </form> 
+    <% } else { %> 
+        <h2>Không tìm thấy bài viết</h2> 
+    <% } %> 
+    <br> 
+    <a href="/news">Quay lại danh sách tin tức</a> 
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin tài khoản</title>
+</head>
+<body>
+    <h1>Thông tin người dùng</h1> 
+    <p>Xin chào: <%= user.fullname || user.username %></p> 
+    <p>Username: <%= user.username %></p> 
+    <p> 
+        <a href="/news">Xem tin tức</a> | 
+        <a href="/logout">Đăng xuất</a> 
+    </p> 
+</body>
+</html>

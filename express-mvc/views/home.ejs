@@ -1,0 +1,11 @@
+<%- include("partials/header", { title: "Thêm bài viết" })%> 
+
+    <h1>Mini Website Tin Tức</h1> 
+
+<%- include("partials/navbar") %> 
+    <form method="GET" action="/news/search"> 
+        <input type="text" name="keyword" placeholder="Nhập từ khóa"> 
+        <button type="submit">Tìm kiếm</button> 
+    </form>
+    <p>Website sử dụng Express và MySQL.</p> 
+<%- include("partials/footer") %>

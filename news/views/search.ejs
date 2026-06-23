@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm kiếm</title>
+</head>
+<body>
+    <h1>Tìm kiếm bài viết</h1>
+    <form method="GET" action="/search">
+        <input type="text" name="keyword" placeholder="Nhập từ khóa">
+        <button type="submit">Tìm kiếm</button>
+    </form>
+    <% if(keyword){ %>
+        <p>Bạn đang tìm kiếm tin tức về: <%= keyword %></p>
+        <%if(newsList.length > 0) {%> 
+        <h1>Danh sách tin tức</h1> 
+        <% newsList.forEach((item)=>{ %> 
+        <ul> 
+            <li> 
+                <a href="/news/<%= item.id %>"> <%= item.title %> </a> 
+            </li>
+        </ul> 
+        <% })%> 
+        <% } else { %> 
+                <h1>Không tìm thấy bài viết</h1>
+        <% } %>  
+    <% } %>  
+</body>
+</html>

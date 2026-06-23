@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tin tức</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Trang chủ</a> | 
+        <a href="/about">Giới thiệu</a> | 
+        <a href="/news">Tin tức</a>
+        <% if(typeof user !== 'undefined' && user) { %> 
+            <p> 
+                Xin chào <strong><%= user.fullname || user.username %></strong> | 
+                <a href="/profile">Tài khoản</a> | 
+                <a href="/logout">Đăng xuất</a> 
+            </p> 
+        <% } else { %> 
+            <p> 
+                <a href="/login">Đăng nhập</a> | 
+                <a href="/register">Đăng ký</a> 
+            </p> 
+        <% } %> 
+    </nav>
+    <hr>
+    <% if(typeof user !== 'undefined' && user) { %>
+        <p> 
+            <a href="/create" style="font-weight: bold;">+ Thêm bài viết mới</a> 
+        </p> 
+    <% } %> 
+    <% if(typeof id !== 'undefined' && id && newsList.length > 0) { %> 
+        <div class="news-detail">
+            <p>
+                <em>Bạn đang xem tin tức số <%= id %></em>
+                
+                <% if(typeof user !== 'undefined' && user) { %> 
+                    | <a href="/edit?id=<%= newsList[0].id %>">Sửa bài viết</a> 
+                    | <a href="/delete?id=<%= newsList[0].id %>" onclick="return confirm('Bạn có chắc muốn xóa bài viết này?')">Xóa</a> 
+                <% } %> 
+            </p> 
+            
+            <h2><%= newsList[0].title %></h2> 
+            <p><%= newsList[0].description %></p> 
+        </div>
+
+    <% } else if(typeof newsList !== 'undefined' && newsList.length > 0) { %> 
+        <h1>Danh sách tin tức</h1> 
+        <ul> 
+            <% newsList.forEach((item) => { %> 
+                <li>
+                    <a href="/news/<%= item.id %>"><%= item.title %></a> 
+                    
+                    <% if(typeof user !== 'undefined' && user) { %> 
+                        | <a href="/edit?id=<%= item.id %>">Sửa</a> 
+                        | <a href="/delete?id=<%= item.id %>" onclick="return confirm('Bạn có chắc muốn xóa bài viết này?')">Xóa</a> 
+                    <% } %>
+                </li> 
+            <% }) %> 
+        </ul> 
+    <% } else { %> 
+        <h1>Không tìm thấy bài viết</h1>
+    <% } %> 
+</body>
+</html>

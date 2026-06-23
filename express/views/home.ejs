@@ -1,0 +1,27 @@
+<!DOCTYPE html> 
+<html lang="vi"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <title>Trang chủ</title> 
+  <link rel="stylesheet" href="/css/style.css"> 
+</head> 
+<body> 
+    <h1>Mini Website Tin Tức</h1> 
+    <nav> 
+    <a href="/">Trang chủ</a> 
+    <a href="/news">Tin tức</a>
+    <a href="/news/add">Thêm bài viết</a>
+    <% if (user) { %> 
+        <span>Xin chào, <%= user.username %></span> 
+        <a href="/logout">Đăng xuất</a> 
+    <% } else { %> 
+        <a href="/login">Đăng nhập</a> 
+    <% } %> 
+    </nav>
+    <form method="GET" action="/news/search"> 
+        <input type="text" name="keyword" placeholder="Nhập từ khóa"> 
+        <button type="submit">Tìm kiếm</button> 
+    </form>
+    <p>Website sử dụng Express và MySQL.</p> 
+</body> 
+</html>  

@@ -1,0 +1,30 @@
+<%- include("../partials/header", {title: "Danh sách tin tức"})%>
+  <h1>Danh sách bài viết</h1> 
+<%- include("../partials/navbar")%>
+    <% if (user) { %> 
+        <div style="margin-bottom: 20px;">
+            <a href="/news/add" style="padding: 8px 12px; background: #1f4e79; color: white; border-radius: 5px;">
+                + Thêm bài viết mới
+            </a>
+        </div>
+    <% } %> 
+    <ul> 
+        <% posts.forEach(posts => { %> 
+            <li style="margin-bottom: 10px;">
+                <a href="/news/<%= posts.id %>" style="font-size: 18px; font-weight: bold;">
+                    <%= posts.title %>
+                </a> 
+                <% if (user) { %> 
+                    <span style="margin-left: 15px;">
+                        <a href="/news/<%= posts.id %>/edit">Sửa</a> | 
+                        <form action="/news/<%= posts.id %>/delete" method="POST" style="display:inline;" onsubmit="return confirm('Bạn có chắc chắn muốn xóa bài viết này không?');"> 
+                            <button type="submit" style="color: red; border: none; background: none; cursor: pointer; font-size: 16px;">
+                                Xóa
+                            </button> 
+                        </form> 
+                    </span>
+                <% } %> 
+            </li>
+        <% }) %> 
+    </ul> 
+<%- include("../partials/footer")%>

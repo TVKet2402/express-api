@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm bài viết</title>
+    <link rel="stylesheet" href="/css/style.css"> 
+</head>
+<body>
+    <nav>
+    <a href="/">Trang chủ</a> 
+    <a href="/news">Tin tức</a>
+    <a href="/news/add">Thêm bài viết</a>
+    <% if (user) { %> 
+        <span>Xin chào, <%= user.username %></span> 
+        <a href="/logout">Đăng xuất</a> 
+    <% } else { %> 
+        <a href="/login">Đăng nhập</a> 
+    <% } %> 
+  </nav>
+  <h1>Thêm bài viết</h1>
+  <form action="/news/add" method="POST">
+    <div>
+      <label>Tiêu đề</label>
+      <input type="text" name="title">
+    </div>
+    <div>
+      <label>Mô tả</label>
+      <textarea name="description"></textarea>
+    </div>
+    <button type="submit">Lưu</button>
+  </form>
+</body>
+</html>
