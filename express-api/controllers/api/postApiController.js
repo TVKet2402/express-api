@@ -15,4 +15,27 @@ async function index(req, res) {
         })
     }
 }
-module.exports = { index }
+async function show(req, res) {   
+    try { 
+        const id = req.params.id 
+        const post = await postModel.getPostById(id) 
+        if (!post) { 
+            return res.status(404).json({         
+                success: false, 
+                message: "Không tìm thấy bài viết" 
+            }) 
+        }      
+        res.json({       
+            success: true,       
+            data: post     
+        }) 
+    } catch (error) {     
+        console.log(error) 
+        res.status(500).json({       
+            success: false, 
+            message: "Lỗi khi lấy chi tiết bài viết" 
+        }) 
+    } 
+}
+
+module.exports = { index, show }
